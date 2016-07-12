@@ -62,23 +62,33 @@ footer {
 	font-size: 20px
 }
 
-nav a {
+#nav a {
 	color: white;
 	padding: 25px;
 	display: block;
+	font-size: 24px;
 	float: left;
 	text-decoration: none;
-	font-size: 24px;
 	font-family: 
 }
 
 nav {
-
+	margin: 0 auto;
 }
 
 nav a:hover {
 	background-color: rgba(255,255,255,0.5);
 	color: black;
+}
+
+nav button {
+	display: block;
+	float: right;
+	height: 60px;
+	width: 200px;
+	padding: 10px;
+	margin: 10px;
+	text-align: center;
 }
 
 .clearfix:after {
@@ -129,8 +139,21 @@ span {
 	}
 }
 
-#game a {
-	text-align: right;
+#game button {
+	background-color: transparent;
+	font-family: 'Indie Flower';
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	border: 3px ridge #E4E8E5;
+}
+
+#backToTop a{
 	color: white;
 	text-decoration: none;
+}
+
+#game button:hover {
+	background-color: rgba(255,255,255,0.7);
+	color: #0E3311;
 }
