@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Memory Game</title>
+  <title>Johnnie's Memory Game</title>
   <link rel="stylesheet" type=text/css href="reset.css">
   <link rel="stylesheet" type=text/css href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 
-<nav class="clearfix">
+<nav class="clearfix" id="nav">
   <a href="#instructions">Instructions</a>
   <a href="#game">Game</a>
 </nav>
 
+  <div id = 'header1'>
+    <h1>Johnnie's Memory Game</h1>
+
+    <p>This game is really fun - you should definitely play it</p>
+
+    <p>Why not <a href="https://twitter.com/delamorinierejh">follow me on Twitter</a> or <a href="mailto:delamorinierejh@gmail.com">send me an email</a>?</p>
+  </div>
+
   <hr>
 
-  <h1>Memory Game</h1>
+  <div id = "instructions">
+    <h2><a name="instructions">Instructions</a></h2>
 
-  <p>This game is really fun - you should definitely play it</p>
-
-  <p>Why not <a href="https://twitter.com/delamorinierejh">follow me on Twitter</a> or <a href="mailto:delamorinierejh@gmail.com">send me an email</a>?</p>
-
-
-  <h2><a name="instructions">Instructions</a></h2>
-
-  <p>Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.</p>
-
-  </br>
-
-  <h2 name="game"><a name="game">Game</a></h2>
-
-  <div class="board">
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+    <p id="instructionsblurb">Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.</p>
   </div>
-  </body>
 
-  <footer>Created with love by <span>Johnnie de La Moriniere</span></footer>
+
+  <div id="game">
+    <h2 name="game"><a name="game" id="gamebutton">Let's play!</a></h2>
+
+    <div class="board" id="game-board">
+    </div>
+    <a href="#nav">Back to top</a>
+  </div>
+
+  <footer>This game is a production of <span>Johnnie de La Moriniere</span> studios.</footer>
 
 <script src="main.js"></script>
+
 
 </body>
 </html>

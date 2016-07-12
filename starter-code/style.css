@@ -3,54 +3,82 @@ comment. Add your CSS code
 from Unit 1 - 5 below  */
 
 body {
-	font-family: sans-serif;
+	font-family: 'Indie Flower', cursive;
+	background-image: url('http://www.jennsden.co.uk/wp-content/uploads/2013/11/blackboard-backgrounds-wallpapers.jpg')
+}
+
+#header1 {
+	padding-bottom: 10px;
+	font-family: 'Indie Flower', cursive;
+}
+
+#instructions {
+	padding: 10px 0 0 0;
+	font-family: 'Indie Flower', cursive;
+}
+
+#game {
+	background-image: url("http://thumbs.dreamstime.com/t/poker-table-felt-green-color-background-31070080.jpg");
+	padding: 20px 0 5px 0;
+	font-family: 'Indie Flower', cursive;
 }
 
 h1, h2, footer, p {
 	text-align: center;
+	color: white;
 }
 
 h1 {
-	color: rgb(2, 132, 130);
 	text-decoration: underline;
-	font-size: 40px;
-	padding: 5px;
-	margin: 20px;
+	font-size: 54px;
+	padding: 20px;
+	margin: 0;
 	font-weight: bold;
 }	
 h2 {
-	color: #ffd700;
+	color: white;
 	padding: 5px;
-	font-size: 32px;
+	font-size: 50px;
 }
 
 p {
 	line-height: 25px;
 	padding-left: 10px;
 	margin: 20px;
+	font-size: 28px;
+}
+
+p a {
+	color: white;
+}
+
+p a:hover {
+	color: red;
 }
 
 footer {
-	background-color: #808080;
 	color: white;
-}
-
-nav {
-	background: #808080;
+	padding: 5px;
+	font-size: 20px
 }
 
 nav a {
-	background-color: #ffbf00;
 	color: white;
-	padding: 35px;
+	padding: 25px;
 	display: block;
 	float: left;
 	text-decoration: none;
-	font-size: 20px;
+	font-size: 24px;
+	font-family: 
+}
+
+nav {
+
 }
 
 nav a:hover {
-	background-color: #ee5f3c;
+	background-color: rgba(255,255,255,0.5);
+	color: black;
 }
 
 .clearfix:after {
@@ -64,21 +92,45 @@ nav a:hover {
 
 .board {
 	height: 50%;
-	width: 50%;
+	width: 100%;
 	display: inline-block;
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 }
 
 .card {
-	height: 200px;
+	height: 210px;
 	width: 150px;
 	border: 1px solid black;
-	background: yellow;
+	background-image: url('http://www.murphysmagicsupplies.com/images_email/Mandolin_BACK.jpg');
+	background-size: cover;
 	border-radius: 10px;
 	float: left;
-	margin: 8%;
+	margin: 4%;
+	cursor: pointer;
+}
+
+img {
+	height: 210px;
+	width: 150px;
+}
+
+#instructionsblurb {
+	text-align: justify;
+	padding-bottom: 10px;
 }
 
 span {
 	color: #ff0000;
+}
+
+@media (max-width: 555px) {
+		footer {
+			font-size: 12px;
+	}
+}
+
+#game a {
+	text-align: right;
+	color: white;
+	text-decoration: none;
 }
