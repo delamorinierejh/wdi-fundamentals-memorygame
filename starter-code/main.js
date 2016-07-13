@@ -184,9 +184,9 @@ var confirmedMatch = function(array) {
 
  // alert when game has been finished
   cards.length === 0 ? 
-    (score === (attempts + 1) ? 
+    score === attempts ? 
     alert("Wow! Perfect Game! Click 'Reset' to play the same game again, or start a 'New Game'!") :
-    alert("Well done! Click 'Reset' to play the same game again, or start a 'New Game'!")) : 
+    alert("Well done! Click 'Reset' to play the same game again, or start a 'New Game'!") : 
     updateBoard();
 };
 
@@ -204,14 +204,14 @@ var isTwoCards = function() {
   // if you have two cards in play check for a match
   if (cardsInPlay.length === 2) {
 
-    // pass the cardsInPlay as an argument to isMatch function
-    isMatch(cardsInPlay);
-
     // increase the attempts by 1
     attempts++;
 
     // display new attempts number
     document.getElementById('attempts').innerHTML = 'Attempts: ' + attempts + '';
+
+    // pass the cardsInPlay as an argument to isMatch function
+    isMatch(cardsInPlay);
 
     // clear cards in play array for next try
     cardsInPlay = [];
@@ -232,8 +232,4 @@ document.getElementById('reset').addEventListener('click', createBoard);
 document.getElementById('newGame').addEventListener('click', determinePairs);
 
 document.getElementById('backToTop').addEventListener('click', scrollTop);
-
-
-
-
 
