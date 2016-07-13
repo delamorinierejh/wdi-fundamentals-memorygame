@@ -21,8 +21,13 @@ var cards = [];
 
 var cardsInPlay = [];
 
+var attempts = 0;
+
 var score = 0;
 
+var updateCount = 0;
+
+var cardSizeGroup;
 
 // this asks the player on page load how many pairs they want to play with
 var determinePairs = function(){
@@ -30,11 +35,11 @@ var determinePairs = function(){
   cards = [];
   beginningCards = [];
   var input = prompt("How many pairs do you want to find? Enter a number between 1 and 12");
-  if (isNaN(input) || input < 4 || input > 12) {
+  if (isNaN(input) || input < 1 || input > 12) {
     alert("Please enter a number between 1 and 12");
     determinePairs();
   } else {
-    for (var i = 0; i < input; i++) {
+      for (var i = 0; i < input; i++) {
       beginningCards.push(cardOptions[i]);
       beginningCards.push(cardOptions[i]);
     }
@@ -73,9 +78,13 @@ var shuffle = function(array) {
 };
 
 var createBoard = function () {
+  updateCount = 0;
   // reset the board
   gameBoard.innerHTML = '';
   cards = [];
+  // reset the attempts
+  attempts = 0;
+  document.getElementById('attempts').innerHTML = 'Attempts: ' + attempts + '';
   // reset the score
   score = 0;
   document.getElementById('score').innerHTML = 'Score: ' + score + '';  
@@ -85,7 +94,17 @@ var createBoard = function () {
     }
   for (var i = 0; i < cards.length; i++) {
     var newCard = document.createElement('div');
-    newCard.className = "card";
+    if (cards.length > 15) {
+      newCard.className = "card1";
+      cardSizeGroup = 1;
+      newCard.setAttribute('card-size-group', 1);
+    } else if (cards.length > 10) {
+      newCard.className = "card2";
+      cardSizeGroup = 2;
+    } else {
+      newCard.className = "card3";
+      cardSizeGroup = 3;
+    }
     newCard.setAttribute('data-card', cards[i]);
     newCard.addEventListener('click', isTwoCards);
     gameBoard.appendChild(newCard);
@@ -93,14 +112,22 @@ var createBoard = function () {
 };
 
 var updateBoard = function() {
-    // setting the timeout so pairs diaply for a bit
+    // increase count of updates
+    updateCount ++;
+    // setting the timeout so pairs display for a bit
     setTimeout(function(){
    // reset the board
     gameBoard.innerHTML = '';
     // update board with amended cards array
     for (var i = 0; i < cards.length; i++) {
       var newCard = document.createElement('div');
-      newCard.className = "card";
+      if ((cards.length + updateCount * 2) > 15) {
+      newCard.className = "card1";
+      } else if ((cards.length + updateCount * 2) > 10) {
+      newCard.className = "card2";
+      } else {
+      newCard.className = "card3";
+      }
       newCard.setAttribute('data-card', cards[i]);
       newCard.addEventListener('click', isTwoCards);
       gameBoard.appendChild(newCard);
@@ -117,7 +144,7 @@ var noMatch = function(array) {
     //alert("Sorry, try again.");
       // clears innerHTML from all cards (turns them back over)
     for (var i = 0; i < cards.length; i++) {
-    document.getElementsByClassName('card')[i].innerHTML = " ";
+    document.getElementsByClassName('card' + cardSizeGroup)[i].innerHTML = " ";
   }
 };
 
@@ -137,7 +164,11 @@ var confirmedMatch = function(array) {
 
 
  // alert when game has been finished
-  cards.length === 0 ? alert("Well done! Click 'Reset' to play the same game again, or start a 'New Game'!") : updateBoard();
+  cards.length === 0 ? 
+    (score === (attempts + 1) ? 
+    alert("Wow! Perfect Game! Click 'Reset' to play the same game again, or start a 'New Game'!") :
+    alert("Well done! Click 'Reset' to play the same game again, or start a 'New Game'!")) : 
+    updateBoard();
 };
 
 
@@ -149,7 +180,7 @@ var isTwoCards = function() {
   cardsInPlay.push(this.getAttribute('data-card'));
 
   // turn cards over
-  this.innerHTML = '<img src="root/' + this.getAttribute('data-card') + '.png">';
+  this.innerHTML = '<img class="img' + cardSizeGroup + '" src="root/' + this.getAttribute('data-card') + '.png">';
 
   // if you have two cards in play check for a match
   if (cardsInPlay.length === 2) {
@@ -157,6 +188,11 @@ var isTwoCards = function() {
     // pass the cardsInPlay as an argument to isMatch function
     isMatch(cardsInPlay);
 
+    // increase the attempts by 1
+    attempts++;
+
+    // display new attempts number
+    document.getElementById('attempts').innerHTML = 'Attempts: ' + attempts + '';
 
     // clear cards in play array for next try
     cardsInPlay = [];
