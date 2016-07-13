@@ -115,7 +115,7 @@ nav button {
 	background-size: cover;
 	border-radius: 10px;
 	float: left;
-	margin: 1.2%;
+	margin: 0.6% 1.2%;
 	cursor: pointer;
 }
 
@@ -127,7 +127,7 @@ nav button {
 	background-size: cover;
 	border-radius: 10px;
 	float: left;
-	margin: 2.4%;
+	margin: 0.6% 2.4%;
 	cursor: pointer;
 }
 
@@ -139,9 +139,22 @@ nav button {
 	background-size: cover;
 	border-radius: 10px;
 	float: left;
-	margin: 4%;
+	margin: 0.6% 4%;
 	cursor: pointer;
 }
+
+.card4 {
+	height: 182px;
+	width: 132px;
+	border: 1px solid black;
+	background-image: url('http://www.murphysmagicsupplies.com/images_email/Mandolin_BACK.jpg');
+	background-size: cover;
+	border-radius: 10px;
+	float: left;
+	margin: 0.6% 1.7%;
+	cursor: pointer;
+}
+
 
 /*.blankCard {
 	height: 210px;
@@ -168,6 +181,11 @@ nav button {
 .img3 {
 	height: 210px;
 	width: 150px;
+}
+
+.img4 {
+	height: 182px;
+	width: 132px;
 }
 
 #instructionsblurb {
@@ -203,3 +221,4 @@ span {
 	background-color: rgba(255,255,255,0.7);
 	color: #0E3311;
 }
+

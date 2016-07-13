@@ -25,7 +25,7 @@ var attempts = 0;
 
 var score = 0;
 
-var updateCount = 0;
+//var updateCount = 0;
 
 var cardSizeGroup;
 
@@ -34,9 +34,9 @@ var determinePairs = function(){
   gameBoard.innerHTML = '';
   cards = [];
   beginningCards = [];
-  var input = prompt("How many pairs do you want to find? Enter a number between 1 and 12");
-  if (isNaN(input) || input < 1 || input > 12) {
-    alert("Please enter a number between 1 and 12");
+  var input = prompt("How many pairs do you want to find? Enter a number between 1 and 9");
+  if (isNaN(input) || input < 1 || input > 9) {
+    alert("Please enter a number between 1 and 9");
     determinePairs();
   } else {
       for (var i = 0; i < input; i++) {
@@ -94,10 +94,21 @@ var createBoard = function () {
     }
   for (var i = 0; i < cards.length; i++) {
     var newCard = document.createElement('div');
-    if (cards.length > 15) {
+    if (cards.length === 6) {
+      newCard.className = "card2";
+      cardSizeGroup = 2;
+    } else if (cards.length === 8) {
       newCard.className = "card1";
       cardSizeGroup = 1;
-      newCard.setAttribute('card-size-group', 1);
+    } else if (cards.length === 18) {
+      newCard.className = "card2";
+      cardSizeGroup = 2;
+    } else if (cards.length === 14) {
+      newCard.className = "card4";
+      cardSizeGroup = 4;
+    } else if (cards.length > 15) {
+      newCard.className = "card1";
+      cardSizeGroup = 1;
     } else if (cards.length > 10) {
       newCard.className = "card2";
       cardSizeGroup = 2;
@@ -113,7 +124,7 @@ var createBoard = function () {
 
 var updateBoard = function() {
     // increase count of updates
-    updateCount ++;
+    //updateCount ++;
     // setting the timeout so pairs display for a bit
     setTimeout(function(){
    // reset the board
@@ -121,9 +132,17 @@ var updateBoard = function() {
     // update board with amended cards array
     for (var i = 0; i < cards.length; i++) {
       var newCard = document.createElement('div');
-      if ((cards.length + updateCount * 2) > 15) {
+      if (beginningCards.length === 6) {
+      newCard.className = "card2";
+      } else if (beginningCards.length === 8) {
       newCard.className = "card1";
-      } else if ((cards.length + updateCount * 2) > 10) {
+      } else if (beginningCards.length === 14) {
+      newCard.className = "card4";
+      } else if (beginningCards.length === 18) {
+      newCard.className = "card2";
+      } else if (beginningCards.length > 15) {
+      newCard.className = "card1";
+      } else if (beginningCards.length > 10) {
       newCard.className = "card2";
       } else {
       newCard.className = "card3";
