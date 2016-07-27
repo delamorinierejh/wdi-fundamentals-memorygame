@@ -199,7 +199,7 @@ var isTwoCards = function() {
   cardsInPlay.push(this.getAttribute('data-card'));
 
   // turn cards over
-  this.innerHTML = '<img class="img' + cardSizeGroup + '" src="card-images/' + this.getAttribute('data-card') + '.png"/>';
+  this.innerHTML = '<img class="img' + cardSizeGroup + '" src="card-images/' + this.getAttribute('data-card') + '.png" alt = "' + this.getAttribute('data-card') + '"/>';
 
   // if you have two cards in play check for a match
   if (cardsInPlay.length === 2) {
