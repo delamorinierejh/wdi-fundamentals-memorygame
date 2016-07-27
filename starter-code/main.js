@@ -170,7 +170,7 @@ var noMatch = function(array) {
 var confirmedMatch = function(array) {
   // increase score by 1
   score ++;
-  // alert about a match
+  // alert about a match 
   //alert("You found a match!");
 
   // display new score
@@ -199,7 +199,7 @@ var isTwoCards = function() {
   cardsInPlay.push(this.getAttribute('data-card'));
 
   // turn cards over
-  this.innerHTML = '<img class="img' + cardSizeGroup + '" src="root/' + this.getAttribute('data-card') + '.png">';
+  this.innerHTML = '<img class="img' + cardSizeGroup + '" src="card-images/' + this.getAttribute('data-card') + '.png"/>';
 
   // if you have two cards in play check for a match
   if (cardsInPlay.length === 2) {
