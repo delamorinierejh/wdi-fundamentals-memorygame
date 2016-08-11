@@ -5,32 +5,32 @@ var cardTwo = "queen";
 var cardThree = "king";
 var cardFour = "king";*/
 
-var gameBoard = document.getElementById('game-board');
+var gameBoard = document.getElementById('game-board'),
 
-var cardOptions = ['ace', 'king', 'queen', 'jack', 'ten', 'nine', 'eight', 'seven', 'six', 'five', 'four', 'three', 'two'];
+cardOptions = ['ace', 'king', 'queen', 'jack', 'ten', 'nine', 'eight', 'seven', 'six', 'five', 'four', 'three', 'two'],
 
-var beginningCards = [];
+beginningCards = [],
 
 //var beginningCards = ['queen', 'jack', 'king', 'jack', 'ace', 'king', 'ten', 'queen', 'ace', 'ten'];
 
-var cards = [];
+cards = [],
 
 /*for (var i = 0; i < beginningCards.length; i++) {
   cards.push(beginningCards[i]);
 }*/
 
-var cardsInPlay = [];
+cardsInPlay = [],
 
-var attempts = 0;
+attempts = 0,
 
-var score = 0;
+score = 0,
 
 //var updateCount = 0;
 
-var cardSizeGroup;
+cardSizeGroup;
 
 // this asks the player on page load how many pairs they want to play with
-var determinePairs = function(){
+function determinePairs(){
   gameBoard.innerHTML = '';
   cards = [];
   beginningCards = [];
@@ -45,7 +45,7 @@ var determinePairs = function(){
     }
   }
   shuffle(beginningCards);
-  // size of the cards will adjust depending on how many pairs are chosen.
+  // BROKEN AND COMMENTED OUT - size of the cards will adjust depending on how many pairs are chosen.
   /*if (beginningCards.length % 16 === 0 || beginningCards.length % 24 === 0){
     var document.getElementsByClassName('card').className = "card";
     document.getElementsByClassName('card2').className = "card";
@@ -55,11 +55,11 @@ var determinePairs = function(){
     document.getElementsByClassName('card2').className = "card2";
   }*/
   createBoard();
-};
+}
 
 
 // the below function shuffles the beginningCards array to make randomised games
-var shuffle = function(array) {
+shuffle = function(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...
@@ -75,9 +75,9 @@ var shuffle = function(array) {
     array[randomIndex] = temporaryValue;
   }
   return array;
-};
+}
 
-var createBoard = function () {
+function createBoard() {
   updateCount = 0;
   // reset the board
   gameBoard.innerHTML = '';
@@ -92,8 +92,10 @@ var createBoard = function () {
   for (var i = 0; i < beginningCards.length; i++) {
       cards.push(beginningCards[i]);
     }
+
   for (var i = 0; i < cards.length; i++) {
     var newCard = document.createElement('div');
+     // adjust size of the cards depending on the number of cards 
     if (cards.length === 6) {
       newCard.className = "card2";
       cardSizeGroup = 2;
@@ -120,9 +122,9 @@ var createBoard = function () {
     newCard.addEventListener('click', isTwoCards);
     gameBoard.appendChild(newCard);
   }
-};
+}
 
-var updateBoard = function() {
+function updateBoard() {
     // increase count of updates
     //updateCount ++;
     // setting the timeout so pairs display for a bit
@@ -152,22 +154,21 @@ var updateBoard = function() {
       gameBoard.appendChild(newCard);
     }
     }, 1000 );
-};
+}
 
-
-var isMatch = function(array){
+function isMatch(array){
   (array[0] === array[1]) ?   confirmedMatch(array) :  noMatch(array); 
-};
+}
 
-var noMatch = function(array) {
+function noMatch(array) {
     //alert("Sorry, try again.");
       // clears innerHTML from all cards (turns them back over)
     for (var i = 0; i < cards.length; i++) {
     document.getElementsByClassName('card' + cardSizeGroup)[i].innerHTML = " ";
   }
-};
+}
 
-var confirmedMatch = function(array) {
+function confirmedMatch(array) {
   // increase score by 1
   score ++;
   // alert about a match 
@@ -188,10 +189,10 @@ var confirmedMatch = function(array) {
     alert("Wow! Perfect Game! Click 'Reset' to play the same game again, or start a 'New Game'!") :
     alert("Well done! Click 'Reset' to play the same game again, or start a 'New Game'!") : 
     updateBoard();
-};
+}
 
 
-var isTwoCards = function() {
+function isTwoCards() {
 
   // add card to array of cards in play
   // 'this' hasn't been covered in this prework, but
@@ -218,14 +219,16 @@ var isTwoCards = function() {
 
   }
 
-};
+}
 
 // back to top button functionality
-var scrollTop = function() {
+function scrollTop() {
     window.scrollTo(0, 0);
 };
 
 //determinePairs();
+
+// set up click event listeners on bottom buttons 
 
 document.getElementById('reset').addEventListener('click', createBoard);
 
